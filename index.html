@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pramod Munnoli | Portfolio</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="#" class="navbar-logo">Pramod Munnoli<span>.</span></a>
+      <ul class="nav-links">
+        <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+        <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+        <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content glass-hero will-reveal reveal-up">
+        <h1 class="hero-title">Core Java Developer & Web Enthusiast</h1>
+        <p class="hero-subtitle">Building clean, user-focused applications and solving complex technical challenges efficiently.</p>
+        <a href="#contact" class="hero-cta">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about section">
+    <div class="container about-container">
+      <div class="about-image-container">
+        <div class="about-image">
+          <img src="images\Gemini_Generated_Image_ykr5fvykr5fvykr5.png" alt="Pramod Munnoli">
+        </div>
+      </div>
+      <div class="about-content">
+        <h2 class="section-title">About Me</h2>
+        <p class="about-text">
+          Highly motivated Core Java Developer with a strong foundation in object-oriented programming and modern web technologies, including HTML, CSS, and JavaScript. Currently expanding front-end expertise by learning React.js to build dynamic and responsive web applications.
+        </p>
+        <p class="about-text">
+          I'm passionate about creating seamless user experiences and implementing robust backend solutions. With strong problem-solving skills and an eye for design, I enjoy turning complex requirements into elegant solutions.
+        </p>
+        <div class="stats-container">
+          <div class="stat-item">
+            <span class="stat-number" data-target="8.7">0</span>
+            <span class="stat-label">CGPA</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="3">0</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="3">0</span>
+            <span class="stat-label">Certifications</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills section">
+    <div class="container skills-container">
+      <div class="skills-intro">
+        <h2 class="section-title">My Skills</h2>
+        <p>I've developed a diverse set of technical and professional skills that enable me to deliver high-quality solutions.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card glass-card will-reveal reveal-right">
+          <i class="fab fa-java skill-icon"></i>
+          <h3 class="skill-name">Java</h3>
+          <p class="skill-description">Strong foundation in Core Java with object-oriented programming principles.</p>
+          <div class="skill-level-bg">
+            <div class="skill-level-fill" style="width: 90%;"></div>
+          </div>
+        </div>
+        <div class="skill-card glass-card will-reveal reveal-right">
+          <i class="fab fa-html5 skill-icon"></i>
+          <h3 class="skill-name">HTML & CSS</h3>
+          <p class="skill-description">Creating responsive and visually appealing web interfaces.</p>
+          <div class="skill-level-bg">
+            <div class="skill-level-fill" style="width: 85%;"></div>
+          </div>
+        </div>
+        <div class="skill-card glass-card will-reveal reveal-right">
+          <i class="fab fa-js skill-icon"></i>
+          <h3 class="skill-name">JavaScript</h3>
+          <p class="skill-description">Building interactive and dynamic web applications.</p>
+          <div class="skill-level-bg">
+            <div class="skill-level-fill" style="width: 80%;"></div>
+          </div>
+        </div>
+        <div class="skill-card glass-card will-reveal reveal-right">
+          <i class="fas fa-database skill-icon"></i>
+          <h3 class="skill-name">MySQL</h3>
+          <p class="skill-description">Database design, optimization, and management.</p>
+          <div class="skill-level-bg">
+            <div class="skill-level-fill" style="width: 75%;"></div>
+          </div>
+        </div>
+        <div class="skill-card glass-card will-reveal reveal-right">
+          <i class="fab fa-python skill-icon"></i>
+          <h3 class="skill-name">Python</h3>
+          <p class="skill-description">Data processing and automation scripts.</p>
+          <div class="skill-level-bg">
+            <div class="skill-level-fill" style="width: 70%;"></div>
+          </div>
+        </div>
+        <div class="skill-card glass-card will-reveal reveal-right">
+          <i class="fas fa-laptop-code skill-icon"></i>
+          <h3 class="skill-name">C</h3>
+          <p class="skill-description">Low-level programming for system applications.</p>
+          <div class="skill-level-bg">
+            <div class="skill-level-fill" style="width: 65%;"></div>
+          </div>
+        </div>
+        <div class="skill-card glass-card will-reveal reveal-right">
+          <i class="fas fa-palette skill-icon"></i>
+          <h3 class="skill-name">Design Understanding</h3>
+          <p class="skill-description">Creating visually appealing and user-friendly interfaces.</p>
+          <div class="skill-level-bg">
+            <div class="skill-level-fill" style="width: 85%;"></div>
+          </div>
+        </div>
+        <div class="skill-card glass-card will-reveal reveal-right">
+          <i class="fas fa-users skill-icon"></i>
+          <h3 class="skill-name">Team Collaboration</h3>
+          <p class="skill-description">Working effectively in cross-functional teams.</p>
+          <div class="skill-level-bg">
+            <div class="skill-level-fill" style="width: 90%;"></div>
+          </div>
+        </div>
+        <div class="skill-card glass-card will-reveal reveal-right">
+          <i class="fas fa-puzzle-piece skill-icon"></i>
+          <h3 class="skill-name">Problem Solving</h3>
+          <p class="skill-description">Analytical thinking and creative solution development.</p>
+          <div class="skill-level-bg">
+            <div class="skill-level-fill" style="width: 95%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects section">
+    <div class="container projects-container">
+      <div class="projects-intro">
+        <h2 class="section-title">My Projects</h2>
+        <p>Here are some of the projects I've worked on, showcasing my skills and experience.</p>
+      </div>
+      <div class="project-grid">
+        <div class="project-card glass-card will-reveal reveal-up" style="--i:0">
+          <div class="project-image">
+            <img src="https://public.youware.com/users-website-assets/prod/2ba054ce-4b00-469e-93ff-0d6fb011b637/165fb32fea9b43ebae57d5ba18973897.png" alt="Weather Forecast Website">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Weather Forecast Website</h3>
+            <p class="project-description">Built a real-time weather forecast website using HTML, CSS, JavaScript, and a weather API.</p>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">API</span>
+            </div>
+            <div class="project-links">
+              <a href="https://pramod-munnoli.github.io/Weather-App/" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i> View Project</a>
+              <a href="https://github.com/Pramod-Munnoli/Weather-App" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Source Code</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card glass-card will-reveal reveal-up" style="--i:1">
+          <div class="project-image">
+            <img src="https://public.youware.com/users-website-assets/prod/2ba054ce-4b00-469e-93ff-0d6fb011b637/05249ad43be2436e80f49cd8cec79007.jpg" alt="E-Commerce Website">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Todo-tracker</h3>
+            <p class="project-description">A sleek, modern To-Do Web App built with pure HTML, CSS, and JavaScript.
+              Stay organized, stay focused, and get things done in style.</p>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a href="https://pramod-munnoli.github.io/Todo-tracker/" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i> View Project</a>
+              <a href="https://github.com/Pramod-Munnoli/Todo-tracker" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" ></i> Source Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card glass-card will-reveal reveal-up" style="--i:2">
+          <div class="project-image">
+            <img src="https://public.youware.com/users-website-assets/prod/2ba054ce-4b00-469e-93ff-0d6fb011b637/05249ad43be2436e80f49cd8cec79007.jpg" alt="Portfolio Website">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Portfolio Website</h3>
+            <p class="project-description">Designed and developed a personal portfolio website to showcase skills, projects, and achievements.</p>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">JavaScript</span> 
+            </div>
+            <div class="project-links">
+              <a href="https://pramod-munnoli.github.io/Pramod-Portfolio/" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-link" ></i> View Project</a>
+              <a href="https://github.com/Pramod-Munnoli/-Pramod-Portfolio" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" ></i> Source Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact section">
+    <div class="container contact-container">
+      <div class="contact-info">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="about-text">Feel free to reach out if you're looking for a developer, have a question, or just want to connect.</p>
+        
+        <div class="contact-methods">
+          <div class="contact-method">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Email</h4>
+              <p>pramodmunnoli99@gmail.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-method">
+            <div class="contact-icon">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Phone</h4>
+              <p>+91-8105608047</p>
+            </div>
+          </div>
+          
+          <div class="contact-method">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Location</h4>
+              <p>Karnataka, India</p>
+            </div>
+          </div>
+          
+          <div class="contact-method">
+            <div class="contact-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </div>
+            <div class="contact-details">
+              <h4>LinkedIn</h4>
+              <p><a href="https://linkedin.com/in/pramod-munnoli/" target="_blank">pramod-munnoli</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-form-container glass-card will-reveal reveal-right">
+        <form id="contact-form" class="contact-form"> 
+      <div class="form-group">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" id="name" name="name" class="form-control" placeholder="Your name" />
+      </div>
+      <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" name="email" class="form-control" placeholder="Your email" />
+      </div>
+      <div class="form-group">
+        <label for="subject" class="form-label">Subject</label>
+        <input type="text" id="subject" name="subject" class="form-control" placeholder="Your subject" />
+      </div>
+      <div class="form-group">
+        <label for="message" class="form-label">Message</label>
+        <textarea id="message" name="message" class="form-control" placeholder="Your message"></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send Message</button>
+      <div id="form-message" class="form-message"></div>
+    </form> 
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer glass">
+    <div class="container footer-container">
+      <div class="footer-logo">Pramod<span>.</span></div>
+      
+<div class="social-links">
+  <a href="https://www.linkedin.com/in/pramod-munnoli" class="social-link" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+
+  <a href="https://github.com/Pramod-Munnoli" class="social-link" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-github"></i>
+  </a>
+
+  <a href="https://x.com/Munnolipra85078" class="social-link" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-twitter"></i>
+  </a>
+
+  <a href="https://instagram.com/pramod_munnoli_09/" class="social-link" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-instagram"></i>
+  </a>
+</div>
+
+      
+      <div class="footer-nav">
+        <a href="#home" class="footer-nav-link">Home</a>
+        <a href="#about" class="footer-nav-link">About</a>
+        <a href="#skills" class="footer-nav-link">Skills</a>
+        <a href="#projects" class="footer-nav-link">Projects</a>
+        <a href="#contact" class="footer-nav-link">Contact</a>
+      </div>
+      
+      <div class="footer-divider"></div>
+      
+      <div class="copyright">
+        &copy; 2025 Pramod Munnoli. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Custom JS -->
+  <script src="https://lib.youware.com/youware-lib-consumer.1754557047.js" id="yourware-lib"></script><script src="script.js"></script>
+</body>
+</html>
