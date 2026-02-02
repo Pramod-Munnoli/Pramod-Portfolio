@@ -11,6 +11,51 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // ---------- Theme Toggle Logic ----------
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeIcon = themeToggle.querySelector("i");
+
+  // Check for saved theme
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  document.documentElement.setAttribute("data-theme", savedTheme);
+  updateThemeIcon(savedTheme);
+
+  themeToggle.addEventListener("click", () => {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+    document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+    updateThemeIcon(newTheme);
+  });
+
+  function updateThemeIcon(theme) {
+    const statsImg = document.getElementById("gh-stats");
+    const streakImg = document.getElementById("gh-streak");
+    const langsImg = document.getElementById("gh-langs");
+    const contribsImg = document.getElementById("gh-contribs");
+
+    if (theme === "light") {
+      themeIcon.classList.remove("fa-moon");
+      themeIcon.classList.add("fa-sun");
+
+      // Update GH Images for Light Mode
+      if (statsImg) statsImg.src = "https://github-readme-stats-alpha.vercel.app/api?username=Pramod-Munnoli&theme=buefy&hide_border=false&include_all_commits=false&count_private=false";
+      if (streakImg) streakImg.src = "https://nirzak-streak-stats.vercel.app/?user=Pramod-Munnoli&theme=buefy&hide_border=false";
+      if (langsImg) langsImg.src = "https://github-readme-stats-alpha.vercel.app/api/top-langs/?username=Pramod-Munnoli&theme=buefy&hide_border=false&layout=compact";
+      if (contribsImg) contribsImg.src = "https://github-contributor-stats.vercel.app/api?username=Pramod-Munnoli&limit=5&theme=buefy&combine_all_yearly_contributions=true";
+    } else {
+      themeIcon.classList.remove("fa-sun");
+      themeIcon.classList.add("fa-moon");
+
+      // Update GH Images for Dark Mode
+      if (statsImg) statsImg.src = "https://github-readme-stats-alpha.vercel.app/api?username=Pramod-Munnoli&theme=tokyonight&hide_border=false&include_all_commits=false&count_private=false";
+      if (streakImg) streakImg.src = "https://nirzak-streak-stats.vercel.app/?user=Pramod-Munnoli&theme=tokyonight&hide_border=false";
+      if (langsImg) langsImg.src = "https://github-readme-stats-alpha.vercel.app/api/top-langs/?username=Pramod-Munnoli&theme=tokyonight&hide_border=false&layout=compact";
+      if (contribsImg) contribsImg.src = "https://github-contributor-stats.vercel.app/api?username=Pramod-Munnoli&limit=5&theme=tokyonight&combine_all_yearly_contributions=true";
+    }
+  }
+
   // Mobile menu toggle
   const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
   const navLinks = document.querySelector(".nav-links");
@@ -101,87 +146,87 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Contact form submission using EmailJS
   // ✅ Initialize EmailJS
-  (function() {
+  (function () {
     emailjs.init("i8JikQCstt171wYnN"); // Your Public Key
   })();
 
-    const contactForm = document.getElementById("contact-form");
-    const formMessage = document.getElementById("form-message");
+  const contactForm = document.getElementById("contact-form");
+  const formMessage = document.getElementById("form-message");
 
-    if (contactForm) {
-      contactForm.addEventListener("submit", function (e) {
-        e.preventDefault();
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
 
-        const nameInput = document.getElementById("name");
-        const emailInput = document.getElementById("email");
-        const subjectInput = document.getElementById("subject");
-        const messageInput = document.getElementById("message");
+      const nameInput = document.getElementById("name");
+      const emailInput = document.getElementById("email");
+      const subjectInput = document.getElementById("subject");
+      const messageInput = document.getElementById("message");
 
-        let isValid = true;
+      let isValid = true;
 
-        // ✅ Validation
-        if (nameInput.value.trim() === "") { showError(nameInput, "Name is required"); isValid = false; } 
-        else { removeError(nameInput); }
+      // ✅ Validation
+      if (nameInput.value.trim() === "") { showError(nameInput, "Name is required"); isValid = false; }
+      else { removeError(nameInput); }
 
-        if (emailInput.value.trim() === "") { showError(emailInput, "Email is required"); isValid = false; } 
-        else if (!isValidEmail(emailInput.value)) { showError(emailInput, "Please enter a valid email"); isValid = false; } 
-        else { removeError(emailInput); }
+      if (emailInput.value.trim() === "") { showError(emailInput, "Email is required"); isValid = false; }
+      else if (!isValidEmail(emailInput.value)) { showError(emailInput, "Please enter a valid email"); isValid = false; }
+      else { removeError(emailInput); }
 
-        if (subjectInput.value.trim() === "") { showError(subjectInput, "Subject is required"); isValid = false; } 
-        else { removeError(subjectInput); }
+      if (subjectInput.value.trim() === "") { showError(subjectInput, "Subject is required"); isValid = false; }
+      else { removeError(subjectInput); }
 
-        if (messageInput.value.trim() === "") { showError(messageInput, "Message is required"); isValid = false; } 
-        else { removeError(messageInput); }
+      if (messageInput.value.trim() === "") { showError(messageInput, "Message is required"); isValid = false; }
+      else { removeError(messageInput); }
 
-        if (isValid) {
-          formMessage.innerHTML = '<div class="loading-message">Sending message...</div>';
+      if (isValid) {
+        formMessage.innerHTML = '<div class="loading-message">Sending message...</div>';
 
-          // ✅ Template Params (no personal email here)
-          const templateParams = {
-            from_name: nameInput.value,
-            from_email: emailInput.value,
-            subject: subjectInput.value,
-            message: messageInput.value
-          };
+        // ✅ Template Params (no personal email here)
+        const templateParams = {
+          from_name: nameInput.value,
+          from_email: emailInput.value,
+          subject: subjectInput.value,
+          message: messageInput.value
+        };
 
-          // ✅ Replace with your EmailJS Service ID & Template ID
-          emailjs.send('service_hhgij3s', 'template_qy89r6e', templateParams)
-            .then(() => {
-              formMessage.innerHTML = '<div class="success-message">Your message has been sent successfully!</div>';
-              contactForm.reset();
-              setTimeout(() => { formMessage.innerHTML = ''; }, 5000);
-            })
-            .catch(() => {
-              formMessage.innerHTML = '<div class="error-message">Failed to send message. Please try again later.</div>';
-              setTimeout(() => { formMessage.innerHTML = ''; }, 5000);
-            });
-        }
-      });
-    }
-
-    function showError(input, message) {
-      const formGroup = input.parentElement;
-      let error = formGroup.querySelector(".error-message");
-      if (!error) {
-        error = document.createElement("div");
-        error.className = "error-message";
-        formGroup.appendChild(error);
+        // ✅ Replace with your EmailJS Service ID & Template ID
+        emailjs.send('service_hhgij3s', 'template_qy89r6e', templateParams)
+          .then(() => {
+            formMessage.innerHTML = '<div class="success-message">Your message has been sent successfully!</div>';
+            contactForm.reset();
+            setTimeout(() => { formMessage.innerHTML = ''; }, 5000);
+          })
+          .catch(() => {
+            formMessage.innerHTML = '<div class="error-message">Failed to send message. Please try again later.</div>';
+            setTimeout(() => { formMessage.innerHTML = ''; }, 5000);
+          });
       }
-      error.innerText = message;
-      input.classList.add("is-invalid");
-    }
+    });
+  }
 
-    function removeError(input) {
-      const formGroup = input.parentElement;
-      const error = formGroup.querySelector(".error-message");
-      if (error) error.remove();
-      input.classList.remove("is-invalid");
+  function showError(input, message) {
+    const formGroup = input.parentElement;
+    let error = formGroup.querySelector(".error-message");
+    if (!error) {
+      error = document.createElement("div");
+      error.className = "error-message";
+      formGroup.appendChild(error);
     }
+    error.innerText = message;
+    input.classList.add("is-invalid");
+  }
 
-    function isValidEmail(email) {
-      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return re.test(email);
-    }
+  function removeError(input) {
+    const formGroup = input.parentElement;
+    const error = formGroup.querySelector(".error-message");
+    if (error) error.remove();
+    input.classList.remove("is-invalid");
+  }
+
+  function isValidEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
 
   // Animated counter for stats
   const stats = document.querySelectorAll(".stat-number");
@@ -241,49 +286,102 @@ document.addEventListener("DOMContentLoaded", function () {
   const heroTitle = document.querySelector(".hero-title");
 
   if (heroTitle && heroTitle.getAttribute("data-typed") === "true") {
-    const text = heroTitle.getAttribute("data-text");
-    heroTitle.innerHTML = "";
-
-    let i = 0;
-    const speed = 100; // typing speed in milliseconds
+    const dataText = heroTitle.getAttribute("data-text");
+    const roles = dataText.split("|");
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typeSpeed = 100;
 
     function typeWriter() {
-      if (i < text.length) {
-        heroTitle.innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, speed);
+      const currentRole = roles[roleIndex];
+
+      if (isDeleting) {
+        heroTitle.innerHTML = currentRole.substring(0, charIndex - 1);
+        charIndex--;
+        typeSpeed = 50; // Faster deleting speed
+      } else {
+        heroTitle.innerHTML = currentRole.substring(0, charIndex + 1);
+        charIndex++;
+        typeSpeed = 100; // Normal typing speed
       }
+
+      if (!isDeleting && charIndex === currentRole.length) {
+        // Finished typing current role
+        isDeleting = true;
+        typeSpeed = 2000; // Pause at end
+      } else if (isDeleting && charIndex === 0) {
+        // Finished deleting current role
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        typeSpeed = 500; // Short pause before next word
+      }
+
+      setTimeout(typeWriter, typeSpeed);
     }
 
+    // Start slightly delayed
     setTimeout(() => {
       typeWriter();
     }, 500);
   }
 
-  // ---------- Simple scroll animation using IntersectionObserver (added) ----------
-  (function () {
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px 0px -10% 0px",
-      threshold: 0.12
-    };
+  // ---------- Custom Cursor Logic ----------
+  const dot = document.querySelector(".cursor-dot");
+  const outline = document.querySelector(".cursor-outline");
 
-    const revealCallback = (entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          observer.unobserve(entry.target); // animate once
-        }
-      });
-    };
+  window.addEventListener("mousemove", (e) => {
+    const posX = e.clientX;
+    const posY = e.clientY;
 
-    const observer = new IntersectionObserver(revealCallback, observerOptions);
+    dot.style.left = `${posX}px`;
+    dot.style.top = `${posY}px`;
 
-    document.querySelectorAll('.will-reveal, .reveal-up, .reveal-left, .reveal-right, .reveal-zoom').forEach(el => {
-      el.classList.add('will-reveal'); // ensure initial state
-      observer.observe(el);
+    // Outline with slight delay for trail effect
+    outline.animate({
+      left: `${posX}px`,
+      top: `${posY}px`
+    }, { duration: 500, fill: "forwards" });
+  });
+
+  // Cursor scaling on links
+  const interactiveElements = document.querySelectorAll('a, button, .skill-card, .project-card');
+  interactiveElements.forEach(el => {
+    el.addEventListener("mouseenter", () => {
+      dot.style.transform = "translate(-50%, -50%) scale(2)";
+      outline.style.transform = "translate(-50%, -50%) scale(1.5)";
+      outline.style.borderColor = "var(--color-primary)";
     });
-  })();
-  // ---------- End of IntersectionObserver snippet ----------
+    el.addEventListener("mouseleave", () => {
+      dot.style.transform = "translate(-50%, -50%) scale(1)";
+      outline.style.transform = "translate(-50%, -50%) scale(1)";
+      outline.style.borderColor = "rgba(14, 165, 233, 0.3)";
+    });
+  });
 
-});
+  // ---------- Intersection Observer for Premium Reveal ----------
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        // Add staggering to children if they exist
+        if (entry.target.classList.contains('skills-grid') || entry.target.classList.contains('project-grid')) {
+          const children = entry.target.children;
+          Array.from(children).forEach((child, index) => {
+            child.style.transitionDelay = `${index * 0.1}s`;
+            child.classList.add('in-view');
+          });
+        }
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.will-reveal, .skill-card, .project-card, .section-title, .skills-grid, .project-grid').forEach(el => {
+    revealObserver.observe(el);
+  });
+})();
