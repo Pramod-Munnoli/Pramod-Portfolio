@@ -700,8 +700,8 @@ export default function Background3D() {
       <Canvas
         camera={{ position: [0, 0.5, 8], fov: 65 }}
         dpr={[1, 1.5]}
-        gl={{ 
-          antialias: true, 
+        gl={{
+          antialias: true,
           alpha: true,
           powerPreference: 'high-performance',
         }}
