@@ -1,15 +1,25 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { HiMenuAlt3, HiX } from 'react-icons/hi'
+import { 
+  HiMenu, 
+  HiX,
+  HiHome,
+  HiUser,
+  HiCode,
+  HiMap,
+  HiFolder,
+  HiGlobeAlt,
+  HiMail
+} from 'react-icons/hi'
 
 const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Journey', href: '#journey' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Open Source', href: '#opensource' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '#home', icon: <HiHome /> },
+  { name: 'About', href: '#about', icon: <HiUser /> },
+  { name: 'Skills', href: '#skills', icon: <HiCode /> },
+  { name: 'Journey', href: '#journey', icon: <HiMap /> },
+  { name: 'Projects', href: '#projects', icon: <HiFolder /> },
+  { name: 'Open Source', href: '#opensource', icon: <HiGlobeAlt /> },
+  { name: 'Contact', href: '#contact', icon: <HiMail /> },
 ]
 
 export default function Navbar() {
@@ -42,7 +52,8 @@ export default function Navbar() {
   }
 
   return (
-    <motion.nav
+    <>
+      <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -99,14 +110,18 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Toggle */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-2xl text-[var(--text-primary)] z-50"
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <HiX /> : <HiMenuAlt3 />}
-        </button>
+        {!isOpen && (
+          <button
+            onClick={() => setIsOpen(true)}
+            className="md:hidden text-2xl text-[var(--text-primary)] z-50 p-2 -mr-2"
+            aria-label="Open menu"
+          >
+            <HiMenu />
+          </button>
+        )}
       </div>
+
+      </motion.nav>
 
       {/* Mobile Menu */}
       <AnimatePresence>
@@ -116,8 +131,17 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-[var(--bg-primary)]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 md:hidden"
+            className="fixed inset-0 z-[100] bg-[var(--bg-primary)]/98 backdrop-blur-2xl flex flex-col items-center justify-center overflow-y-auto gap-6 md:hidden py-10"
           >
+            {/* Explicit Close Button inside overlay */}
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-6 right-6 p-2 text-3xl text-[var(--text-primary)] hover:text-[var(--accent-cyan)] transition-colors z-[110]"
+              aria-label="Close menu"
+            >
+              <HiX />
+            </button>
+
             {navLinks.map((link, i) => (
               <motion.a
                 key={link.name}
@@ -126,12 +150,15 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08 }}
-                className={`text-2xl font-medium transition-colors ${activeSection === link.href.replace('#', '')
+                className={`flex items-center gap-4 text-2xl font-medium transition-colors ${activeSection === link.href.replace('#', '')
                     ? 'gradient-text'
                     : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                   }`}
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
+                <span className={`${activeSection === link.href.replace('#', '') ? 'text-[var(--accent-purple)]' : 'text-[var(--accent-cyan)]'}`}>
+                  {link.icon}
+                </span>
                 {link.name}
               </motion.a>
             ))}
@@ -148,6 +175,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </>
   )
 }
