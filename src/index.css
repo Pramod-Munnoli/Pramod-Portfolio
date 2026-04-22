@@ -173,7 +173,8 @@ body {
 }
 
 .section-padding {
-  padding: 12rem 5rem; /* Massive spacing for maximum breathing room and focus on each section */
+  padding: 12rem 2rem;
+  /* Reduced horizontal padding for more content width */
   display: flex;
   flex-direction: column;
   align-items: center;

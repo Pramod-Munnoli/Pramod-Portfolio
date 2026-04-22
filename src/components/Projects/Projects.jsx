@@ -58,8 +58,7 @@ const projects = [
     features: [
       'Full MVC Architecture with Express Router',
       'Passport.js Auth (Signup, Login, Logout)',
-      'Category filtering & Tax toggle',
-      'Like/Unlike system (persistent MongoDB)',
+      'Category filtering & Tax toggle', 
       'Flash notifications & Dual validation',
     ],
     techStack: ['Node.js', 'Express', 'MongoDB', 'Passport.js', 'Tailwind CSS'],
@@ -94,7 +93,7 @@ export default function Projects() {
       <div className="absolute top-1/3 left-0 w-[350px] h-[350px] bg-[var(--accent-blue)]/5 rounded-full blur-[120px] -translate-x-1/2" />
       <div className="absolute bottom-1/4 right-0 w-[300px] h-[300px] bg-[var(--accent-green)]/5 rounded-full blur-[100px] translate-x-1/3" />
 
-      <div ref={ref} className="max-w-6xl mx-auto relative z-10">
+      <div ref={ref} className="max-w-screen-2xl mx-auto px-4 relative z-10">
         {/* Header */}
         <motion.div
           initial="hidden"
@@ -113,7 +112,7 @@ export default function Projects() {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-10">
           {projects.map((project, i) => (
             <motion.div
               key={project.title}
@@ -128,9 +127,9 @@ export default function Projects() {
                 {/* Gradient top bar */}
                 <div className={`h-1.5 bg-gradient-to-r ${project.gradient}`} />
 
-                <div className="flex-1 flex flex-col glass-card">
+                <div className="flex-1 flex flex-col gap-y-3 glass-card">
                   {/* Title */}
-                  <div className="flex items-start gap-3 mb-4">
+                    <div className="flex items-start gap-3">
                     <div 
                       className="w-10 h-10 rounded-lg flex items-center justify-center text-xl flex-shrink-0"
                       style={{ backgroundColor: `color-mix(in srgb, ${project.accentColor} 15%, transparent)`, color: project.accentColor }}
@@ -146,12 +145,12 @@ export default function Projects() {
                   </div>
 
                   {/* Features */}
-                  <div className="mb-6">
-                    <h4 className="text-xs tracking-wider uppercase text-[var(--text-muted)] mb-4" style={{ fontFamily: 'var(--font-mono)' }}>
+                  <div>
+                    <h4 className="text-xs tracking-wider uppercase text-[var(--text-muted)] mb-2" style={{ fontFamily: 'var(--font-mono)' }}>
                       ✨ Features
                     </h4>
                     <ul className="space-y-1.5">
-                      {project.features.slice(0, 4).map((feat) => (
+                      {project.features.map((feat) => (
                         <li key={feat} className="flex items-start gap-2 text-sm text-[var(--text-secondary)]">
                           <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: project.accentColor }} />
                           {feat}
@@ -161,15 +160,15 @@ export default function Projects() {
                   </div>
 
                   {/* Tech Stack */}
-                  <div className="mb-6">
-                    <h4 className="text-xs tracking-wider uppercase text-[var(--text-muted)] mb-4" style={{ fontFamily: 'var(--font-mono)' }}>
+                  <div>
+                    <h4 className="text-xs tracking-wider uppercase text-[var(--text-muted)] mb-2" style={{ fontFamily: 'var(--font-mono)' }}>
                       🛠️ Tech Stack
                     </h4>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5">
                       {project.techStack.map((tech) => (
                         <span
                           key={tech}
-                          className="force-tag-padding text-xs rounded-lg bg-white/[0.05] border border-white/[0.08] text-[var(--text-secondary)]"
+                          className="px-2 py-0.5 text-[10px] rounded-md bg-white/[0.05] border border-white/[0.08] text-[var(--text-secondary)]"
                         >
                           {tech}
                         </span>
@@ -178,7 +177,7 @@ export default function Projects() {
                   </div>
 
                   {/* Impact */}
-                  <div className="mb-6 flex-1">
+                  <div className="flex-1">
                     <h4 className="text-xs tracking-wider uppercase text-[var(--text-muted)] mb-2" style={{ fontFamily: 'var(--font-mono)' }}>
                       💡 Impact
                     </h4>

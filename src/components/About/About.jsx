@@ -72,77 +72,113 @@ export default function About() {
           <h2 className="section-title gradient-text">
             About Me
           </h2>
-          <div className="neon-line w-24 mx-auto mt-4" />
         </motion.div>
 
-        {/* Main content */}
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Left - Bio */}
-          <motion.div
-            initial="hidden"
-            animate={inView ? 'visible' : 'hidden'}
-            variants={fadeUp}
-            custom={1}
-          >
-            <div className="glass rounded-2xl glass-card">
-              <p className="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">
-                I'm a passionate <span className="text-[var(--accent-cyan)] font-semibold">MERN stack developer</span> specializing
-                in building scalable, user-centric web applications. With expertise in{' '}
-                <span className="text-[var(--accent-purple)] font-semibold">MongoDB, Express.js, React, and Node.js</span>,
-                I transform complex problems into elegant digital solutions.
-              </p>
-              <p className="text-[var(--text-secondary)] leading-relaxed mb-8">
-                Currently a <span className="text-[var(--accent-gold)] font-semibold">BCA final year student</span>, I have worked
-                on real-world projects that solve genuine problems — from AI-powered resume builders to agricultural
-                marketplace platforms. I believe in learning by building.
-              </p>
-
-              {/* Quick stats */}
-              <div className="grid grid-cols-3 gap-4">
-                {[
-                  { value: '11+', label: 'Repositories' },
-                  { value: '345+', label: 'Contributions' },
-                  { value: '10+', label: 'Open Source PRs' },
-                ].map((stat) => (
-                  <div 
-                    key={stat.label} 
-                    className="text-center rounded-xl bg-white/[0.03] border border-white/[0.06] flex flex-col justify-center"
-                    style={{ padding: '0.75rem 0.25rem' }}
-                  >
-                    <div className="text-xl font-bold gradient-text" style={{ fontFamily: 'var(--font-heading)' }}>
-                      {stat.value}
+        {/* Main content - Restructured for proper alignment */}
+        <div className="flex flex-col gap-12">
+          {/* Top Row: Image & Bio */}
+          <div className="grid lg:grid-cols-5 gap-12 items-center">
+            {/* Left - Profile Image (Takes 2/5 columns) */}
+            <motion.div
+              initial="hidden"
+              animate={inView ? 'visible' : 'hidden'}
+              variants={fadeUp}
+              custom={1}
+              className="lg:col-span-2"
+            >
+              <div className="relative group mx-auto lg:mx-0 w-full max-w-[380px]">
+                {/* Animated Glow Background */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-[var(--accent-cyan)] to-[var(--accent-purple)] rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200 animate-pulse" />
+                
+                <div className="relative glass rounded-full overflow-hidden border border-white/10 aspect-square">
+                  <img 
+                    src="/profile.png" 
+                    alt="Pramod Munnoli" 
+                    className="w-full h-full object-cover transition-all duration-500 transform group-hover:scale-105"
+                  />
+                  
+                  {/* Badge/Tag */}
+                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10 w-full px-4">
+                    <span className="glass force-tag-padding rounded-full text-[10px] font-medium text-[var(--accent-cyan)] uppercase tracking-wider">
+                      Full Stack Dev
+                    </span>
+                    <div className="flex gap-2 items-center">
+                      <div className="w-2 h-2 rounded-full bg-[var(--accent-cyan)] animate-pulse" />
+                      <span className="text-[10px] text-white/70 font-medium uppercase tracking-wider">Open to Opportunities</span>
                     </div>
-                    <div className="text-[10px] uppercase tracking-tighter text-[var(--text-muted)] mt-1">{stat.label}</div>
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
 
-          {/* Right - Highlight Cards */}
-          <div className="flex flex-col gap-8">
+            {/* Right - Bio (Takes 3/5 columns) */}
+            <motion.div
+              initial="hidden"
+              animate={inView ? 'visible' : 'hidden'}
+              variants={fadeUp}
+              custom={2}
+              className="lg:col-span-3 h-full"
+            >
+              <div className="glass rounded-2xl glass-card h-full flex flex-col justify-center">
+                <p className="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">
+                  I'm a passionate <span className="text-[var(--accent-cyan)] font-semibold">MERN stack developer</span> specializing
+                  in building scalable, user-centric web applications. With expertise in{' '}
+                  <span className="text-[var(--accent-purple)] font-semibold">MongoDB, Express.js, React, and Node.js</span>,
+                  I transform complex problems into elegant digital solutions.
+                </p>
+                <p className="text-[var(--text-secondary)] leading-relaxed mb-8">
+                  Currently a <span className="text-[var(--accent-gold)] font-semibold">BCA final year student</span>, I have worked
+                  on real-world projects that solve genuine problems — from AI-powered resume builders to agricultural
+                  marketplace platforms. I believe in learning by building.
+                </p>
+
+                {/* Quick stats */}
+                <div className="grid grid-cols-3 gap-4">
+                  {[
+                    { value: '11+', label: 'Repositories' },
+                    { value: '345+', label: 'Contributions' },
+                    { value: '10+', label: 'Open Source PRs' },
+                  ].map((stat) => (
+                    <div 
+                      key={stat.label} 
+                      className="text-center rounded-xl bg-white/[0.03] border border-white/[0.06] flex flex-col justify-center"
+                      style={{ padding: '0.75rem 0.25rem' }}
+                    >
+                      <div className="text-xl font-bold gradient-text" style={{ fontFamily: 'var(--font-heading)' }}>
+                        {stat.value}
+                      </div>
+                      <div className="text-[10px] uppercase tracking-tighter text-[var(--text-muted)] mt-1">{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Bottom Row - Highlight Cards (3-column grid) */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
             {highlights.map((item, i) => (
               <motion.div
                 key={item.title}
                 initial="hidden"
                 animate={inView ? 'visible' : 'hidden'}
                 variants={fadeUp}
-                custom={i + 2}
-                className="glass rounded-2xl hover:bg-white/[0.06] transition-all duration-300 group cursor-default"
-                style={{ padding: '1.25rem 1.5rem' }}
+                custom={i + 3}
+                className="glass rounded-2xl hover:bg-white/[0.06] transition-all duration-300 group cursor-default flex flex-col"
+                style={{ padding: '1.5rem' }}
               >
                 <div className="flex items-center gap-4 mb-4">
                   <div
-                    className="w-8 h-8 rounded-lg flex items-center justify-center text-xl"
+                    className="w-10 h-10 rounded-lg flex items-center justify-center text-xl shrink-0"
                     style={{ backgroundColor: `color-mix(in srgb, ${item.color} 15%, transparent)`, color: item.color }}
                   >
                     {item.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>
+                  <h3 className="text-lg font-bold text-[var(--text-primary)] leading-tight" style={{ fontFamily: 'var(--font-heading)' }}>
                     {item.title}
                   </h3>
                 </div>
-                <ul className="space-y-3" style={{ paddingLeft: '2.5rem' }}>
+                <ul className="space-y-3 flex-1">
                   {item.items.map((point) => (
                     <li key={point} className="flex items-start gap-3 text-sm text-[var(--text-secondary)] leading-relaxed">
                       <span className="mt-2 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: item.color }} />

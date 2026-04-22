@@ -91,7 +91,7 @@ export default function Hero() {
             <HiArrowDown className="group-hover:translate-y-1 transition-transform" />
           </a>
           <a
-            href="/resume.pdf"
+            href="/developer_pramod.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="group force-premium-padding rounded-full glass text-[var(--text-primary)] font-semibold text-sm sm:text-base hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2"
