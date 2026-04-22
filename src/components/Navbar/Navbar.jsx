@@ -9,13 +9,15 @@ import {
   HiMap,
   HiFolder,
   HiGlobeAlt,
-  HiMail
+  HiMail,
+  HiBriefcase
 } from 'react-icons/hi'
 
 const navLinks = [
   { name: 'Home', href: '#home', icon: <HiHome /> },
   { name: 'About', href: '#about', icon: <HiUser /> },
   { name: 'Skills', href: '#skills', icon: <HiCode /> },
+  { name: 'Experience', href: '#experience', icon: <HiBriefcase /> },
   { name: 'Journey', href: '#journey', icon: <HiMap /> },
   { name: 'Projects', href: '#projects', icon: <HiFolder /> },
   { name: 'Open Source', href: '#opensource', icon: <HiGlobeAlt /> },
