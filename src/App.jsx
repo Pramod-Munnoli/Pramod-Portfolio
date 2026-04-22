@@ -1,5 +1,5 @@
 import { useState, useEffect, Suspense, lazy } from 'react'
-
+import Navbar from './components/Navbar/Navbar'
 import Hero from './components/Hero/Hero'
 import Background3D from './components/Background3D'
 import LoadingScreen from './components/LoadingScreen'
@@ -44,7 +44,7 @@ function App() {
 
       {/* Scrollable content layer */}
       <div className="content-layer">
-
+        <Navbar />
         <main>
           <Hero />
           <Suspense fallback={<SectionLoader />}>
