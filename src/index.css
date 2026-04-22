@@ -2,21 +2,17 @@
 
 /* ===== GLOBAL SPACING OVERRIDES (Fixed attached text issues) ===== */
 .force-premium-padding {
-  padding: 0.2rem 0.8rem !important;
-  /* Reduced from 0.75rem 1.75rem */
-  margin: 0 0.5rem !important;
-  /* Added gap between them */
+  padding: 0.33rem 1.2rem !important;
+  margin: 0 1.5rem !important;
 }
 
 .force-tag-padding {
   padding: 0.25rem 1rem !important;
-  /* Reduced for more compact skill boxes */
-  margin: 0.2rem !important;
+  margin: 0.5rem !important;
 }
 
 .force-container-padding {
   padding: 1.2rem !important;
-  /* Balanced 32px breathing room */
 }
 
 @media (max-width: 640px) {
@@ -35,7 +31,7 @@
 
 /* ===== CUSTOM CSS VARIABLES ===== */
 :root {
-  /* Colors */
+
   --bg-primary: #0a0a1a;
   --bg-secondary: #0f0f2e;
   --bg-card: rgba(15, 15, 46, 0.6);
@@ -56,13 +52,11 @@
   --glow-cyan: 0 0 20px rgba(0, 245, 255, 0.3);
   --glow-purple: 0 0 20px rgba(168, 85, 247, 0.3);
 
-  /* Fonts */
   --font-heading: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
-/* ===== GLOBAL RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -79,12 +73,11 @@ body {
   font-family: var(--font-body);
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  overflow-x: clip;  /* 'clip' unlike 'hidden' does NOT make body a scroll container  */
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -98,13 +91,13 @@ body {
   border-radius: 3px;
 }
 
-/* ===== SELECTION ===== */
+
 ::selection {
   background: rgba(0, 245, 255, 0.2);
   color: var(--accent-cyan);
 }
 
-/* ===== GLASSMORPHISM UTILITY ===== */
+
 .glass {
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
@@ -123,10 +116,8 @@ body {
 
 .card-grid {
   display: grid;
-  gap: 2.5rem;
 }
 
-/* ===== GRADIENT TEXT ===== */
 .gradient-text {
   background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
   -webkit-background-clip: text;
@@ -154,38 +145,22 @@ body {
   text-shadow: 0 0 10px rgba(0, 245, 255, 0.5), 0 0 40px rgba(0, 245, 255, 0.2);
 }
 
-/* ===== NEON LINE ===== */
 .neon-line {
-  height: 2px;
+  height: 3px;
   background: linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-purple), transparent);
 }
 
-/* ===== SECTION ANCHOR OFFSETS ===== */
-/* Navbar is fixed at h-16 = 64px. scroll-margin-top matches this exactly.
-   scroll-behavior: smooth on html handles animation. No JS scroll logic needed. */
-#about,
-#skills,
-#journey,
-#experience,
-#projects,
-#opensource,
-#contact {
-  scroll-margin-top: 64px;
-}
-#home {
-  scroll-margin-top: 0;
-}
-
-/* ===== SECTION STYLING ===== */
 .section-padding {
-  padding: 0.5rem 1.5rem;
-  /* Compact section padding */
+  padding: 12rem 5rem; /* Massive spacing for maximum breathing room and focus on each section */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* ===== UTILITIES ===== */
-.section-id-anchor {
-  scroll-margin-top: 100px;
+.section-padding>div:not(.absolute) {
+  width: 100%;
 }
+
 
 .section-label {
   font-family: var(--font-mono);
@@ -194,7 +169,6 @@ body {
   text-transform: uppercase;
   color: var(--accent-cyan);
   display: block;
-  margin-bottom: 0.75rem;
 }
 
 .section-title {
@@ -259,13 +233,13 @@ body {
 
   0%,
   100% {
-    opacity: 0;
+    opacity: 0.2;
     transform: translateY(0);
   }
 
   50% {
     opacity: 1;
-    transform: translateY(10px);
+    transform: translateY(30px);
   }
 }
 
@@ -323,19 +297,18 @@ body {
   pointer-events: none;
 }
 
-.content-layer section:not(#home)>* {
-  position: relative;
-  z-index: 1;
-}
+/* REMOVED: .content-layer section:not(#home)>* { position: relative; z-index: 1 }
+   This was overriding the Tailwind 'absolute' class on background blur decorators,
+   forcing them into normal document flow and adding ~750px of invisible height per section.
+   Content divs inside each section already have 'relative z-10' as direct Tailwind classes. */
 
-/* ===== CANVAS CONTAINER (legacy) ===== */
 .canvas-container {
   position: absolute;
   inset: 0;
   z-index: 0;
 }
 
-/* ===== LOADING SCREEN ===== */
+
 .loading-screen {
   position: fixed;
   inset: 0;
