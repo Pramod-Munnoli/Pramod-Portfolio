@@ -705,7 +705,7 @@ export default function Background3D() {
           alpha: true,
           powerPreference: 'high-performance',
         }}
-        style={{ background: 'transparent' }}
+        style={{ background: 'transparent', pointerEvents: 'none', touchAction: 'auto' }}
       >
         {/* Lighting */}
         <ambientLight intensity={0.15} />

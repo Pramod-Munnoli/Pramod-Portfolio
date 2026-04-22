@@ -84,7 +84,7 @@ export default function About() {
             variants={fadeUp}
             custom={1}
           >
-            <div className="glass rounded-2xl" style={{ padding: '2rem' }}>
+            <div className="glass rounded-2xl glass-card">
               <p className="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">
                 I'm a passionate <span className="text-[var(--accent-cyan)] font-semibold">MERN stack developer</span> specializing
                 in building scalable, user-centric web applications. With expertise in{' '}

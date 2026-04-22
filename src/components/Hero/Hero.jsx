@@ -6,7 +6,14 @@ export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
       {/* Gradient overlays for depth on top of the global 3D bg */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[var(--bg-primary)]/75 z-[1]" />
+      {/* Unified overlay that blends transparency with the next section */}
+      <div 
+        className="absolute inset-0 pointer-events-none z-[0]" 
+        style={{ 
+          background: 'linear-gradient(to bottom, rgba(10, 10, 26, 0.2) 0%, rgba(10, 10, 26, 0.2) 85%, rgba(10, 10, 26, 0.75) 100%)',
+          bottom: '-1px' 
+        }} 
+      />
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[var(--accent-cyan)]/5 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[var(--accent-purple)]/5 rounded-full blur-[100px] translate-x-1/3 translate-y-1/3" />
 
@@ -97,14 +104,14 @@ export default function Hero() {
         {/* Social Links */}
       </div>
 
-      {/* Circular Scroll Indicator */}
+      {/* Unified Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 hidden sm:flex items-center justify-center"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex items-center justify-center"
       >
-        <div className="relative w-24 h-24 flex items-center justify-center">
+        <div className="relative w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center">
           {/* Rotating Text */}
           <div className="absolute inset-0 animate-rotate-slow">
             <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -114,15 +121,16 @@ export default function Hero() {
                   d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0"
                 />
               </defs>
-              <text className="fill-[var(--text-muted)] text-[8px] uppercase tracking-[0.22em] font-medium" style={{ fontFamily: 'var(--font-mono)' }}>
+              <text className="fill-[var(--text-muted)] text-[9px] sm:text-[8px] uppercase tracking-[0.22em] font-medium" style={{ fontFamily: 'var(--font-mono)' }}>
                 <textPath xlinkHref="#circlePath">
                   Scroll Down • Portfolio 2026 • Scroll Down • Portfolio 2026 • 
                 </textPath>
               </text>
             </svg>
           </div>
-          {/* Social Icons inside circle */}
-          <div className="absolute top-7 flex items-center justify-center gap-3 z-20">
+          
+          {/* Social Icons inside circle - Hidden on very small screens if needed, but keeping for now */}
+          <div className="absolute top-[28%] sm:top-7 flex items-center justify-center gap-2 sm:gap-3 z-20 scale-75 sm:scale-100">
             <a
               href="https://github.com/Pramod-Munnoli"
               target="_blank"
@@ -144,21 +152,8 @@ export default function Hero() {
           </div>
 
           {/* Central Arrow */}
-          <HiArrowDown className="text-[var(--accent-cyan)] text-xl animate-scroll-indicator mt-8" />
+          <HiArrowDown className="text-[var(--accent-cyan)] text-lg sm:text-xl animate-scroll-indicator mt-4 sm:mt-5" />
         </div>
-      </motion.div>
-
-      {/* Mobile Scroll Indicator (Simpler) */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex sm:hidden flex-col items-center gap-2"
-      >
-        <span className="text-[var(--text-muted)] text-[10px] tracking-widest uppercase font-mono">
-          Scroll
-        </span>
-        <HiArrowDown className="text-[var(--accent-cyan)] animate-scroll-indicator" />
       </motion.div>
     </section>
   )

@@ -52,8 +52,7 @@ export default function OpenSource() {
             animate={inView ? 'visible' : 'hidden'}
             variants={fadeUp}
             custom={1}
-            className="glass rounded-2xl relative overflow-hidden"
-            style={{ padding: '2.5rem' }}
+            className="glass rounded-2xl glass-card relative overflow-hidden"
           >
             {/* Decorative gradient */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--accent-orange)]/10 rounded-full blur-[50px]" />
@@ -89,8 +88,7 @@ export default function OpenSource() {
             animate={inView ? 'visible' : 'hidden'}
             variants={fadeUp}
             custom={2}
-            className="glass rounded-2xl relative overflow-hidden"
-            style={{ padding: '1rem' }}
+            className="glass rounded-2xl glass-card relative overflow-hidden"
           >
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-[var(--accent-cyan)]/10 rounded-full blur-[50px]" />
 

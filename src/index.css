@@ -2,7 +2,7 @@
 
 /* ===== GLOBAL SPACING OVERRIDES (Fixed attached text issues) ===== */
 .force-premium-padding {
-  padding: 0.33rem 1.2rem !important;
+  padding: 0.2rem 1.2rem !important;
   margin: 0 1.5rem !important;
 }
 
@@ -27,6 +27,28 @@
   .force-container-padding {
     padding: 1rem !important;
   }
+
+  .section-padding {
+    padding: 8.5rem 1.25rem !important;
+  }
+
+  .timeline-item {
+    padding-left: 1.5rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  .glass-card {
+    padding: 1rem !important;
+  }
+}
+
+.timeline-item {
+  padding-left: 4rem;
+  padding-bottom: 3.5rem;
+}
+
+.glass-card {
+  padding: 2rem;
 }
 
 /* ===== CUSTOM CSS VARIABLES ===== */
@@ -65,7 +87,7 @@
 
 html {
   scroll-behavior: smooth;
-  overflow: visible;
+  overflow-x: hidden;
 }
 
 
@@ -73,7 +95,7 @@ body {
   font-family: var(--font-body);
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  overflow-x: clip;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

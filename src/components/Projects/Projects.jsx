@@ -128,7 +128,7 @@ export default function Projects() {
                 {/* Gradient top bar */}
                 <div className={`h-1.5 bg-gradient-to-r ${project.gradient}`} />
 
-                <div className="flex-1 flex flex-col" style={{ padding: '1.5rem' }}>
+                <div className="flex-1 flex flex-col glass-card">
                   {/* Title */}
                   <div className="flex items-start gap-3 mb-4">
                     <div 

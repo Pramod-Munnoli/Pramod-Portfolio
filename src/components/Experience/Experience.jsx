@@ -67,8 +67,7 @@ function TimelineItem({ item, index }) {
       viewport={{ once: true, margin: '-50px' }}
       variants={fadeUp}
       custom={index}
-      className="relative last:pb-0"
-      style={{ paddingLeft: '4rem', paddingBottom: '3.5rem' }}
+      className="relative last:pb-0 timeline-item"
     >
       {/* Vertical line */}
       <div className="absolute left-[15px] top-0 bottom-0 w-[2px] bg-white/[0.06] last:hidden" />
