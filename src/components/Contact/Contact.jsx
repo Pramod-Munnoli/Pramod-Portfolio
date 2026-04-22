@@ -45,7 +45,7 @@ const socialLinks = [
 
 export default function Contact() {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-100px' })
+  const inView = useInView(ref, { once: true, margin: '-10px' })
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [status, setStatus] = useState(null) // 'success' | 'error' | null
 
@@ -73,14 +73,14 @@ export default function Contact() {
       {/* Background */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[var(--accent-cyan)]/5 rounded-full blur-[150px]" />
 
-      <div ref={ref} className="max-w-5xl mx-auto relative z-10">
+      <div ref={ref} className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <motion.div
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
           variants={fadeUp}
           custom={0}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <span className="section-label">
             Get in Touch

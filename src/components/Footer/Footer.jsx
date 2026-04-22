@@ -23,7 +23,7 @@ export default function Footer() {
   const handleClick = (e, href) => {
     e.preventDefault()
     const el = document.querySelector(href)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   return (

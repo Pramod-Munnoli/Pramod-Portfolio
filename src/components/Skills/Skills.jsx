@@ -151,7 +151,7 @@ const fadeUp = {
 
 export default function Skills() {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-100px' })
+  const inView = useInView(ref, { once: true, margin: '-10px' })
 
   return (
     <section id="skills" className="section-padding relative overflow-hidden">
@@ -172,7 +172,7 @@ export default function Skills() {
           animate={inView ? 'visible' : 'hidden'}
           variants={fadeUp}
           custom={0}
-          className="text-center mb-16"
+          className="text-center mb-6"
         >
           <span className="section-label">
             My Expertise
@@ -184,7 +184,7 @@ export default function Skills() {
         </motion.div>
 
         {/* Skill Categories */}
-        <div className="grid md:grid-cols-2 gap-10 mt-10">
+        <div className="grid md:grid-cols-2 gap-8 mt-6">
           {skillCategories.map((cat, ci) => (
             <motion.div
               key={cat.title}

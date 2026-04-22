@@ -11,7 +11,7 @@ export default function Hero() {
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[var(--accent-purple)]/5 rounded-full blur-[100px] translate-x-1/3 translate-y-1/3" />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+      <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
         {/* Greeting */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -56,7 +56,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.8 }}
-          className="flex flex-wrap justify-center gap-3 md:gap-5 mb-14"
+          className="flex flex-wrap justify-center gap-3 md:gap-5 mb-8"
         >
           {['MERN Specialist', 'Open Source Contributor', 'Hackathon Enthusiast'].map((role, i) => (
             <span
@@ -74,14 +74,10 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 1.0 }}
-          className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mb-10"
+          className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mb-6"
         >
           <a
             href="#projects"
-            onClick={(e) => {
-              e.preventDefault()
-              document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })
-            }}
             className="group force-premium-padding rounded-full bg-gradient-to-r from-[var(--accent-cyan)] to-[var(--accent-purple)] text-[var(--bg-primary)] font-bold text-sm sm:text-base hover:shadow-lg hover:shadow-[var(--accent-cyan)]/25 transition-all duration-300 flex items-center justify-center gap-3"
           >
             Explore My Work
@@ -103,7 +99,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 1.2 }}
-          className="flex items-center justify-center gap-5"
+          className="flex items-center justify-center gap-5 mb-12"
         >
           <a
             href="https://github.com/Pramod-Munnoli"
@@ -126,15 +122,44 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Circular Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
+        className="absolute bottom-0.5 left-1/2 -translate-x-1/2 z-10 hidden sm:flex items-center justify-center"
       >
-        <span className="text-[var(--text-muted)] text-xs tracking-widest uppercase" style={{ fontFamily: 'var(--font-mono)' }}>
-          Scroll Down
+        <div className="relative w-24 h-24 flex items-center justify-center">
+          {/* Rotating Text */}
+          <div className="absolute inset-0 animate-rotate-slow">
+            <svg viewBox="0 0 100 100" className="w-full h-full">
+              <defs>
+                <path
+                  id="circlePath"
+                  d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0"
+                />
+              </defs>
+              <text className="fill-[var(--text-muted)] text-[8px] uppercase tracking-[0.22em] font-medium" style={{ fontFamily: 'var(--font-mono)' }}>
+                <textPath xlinkHref="#circlePath">
+                  Scroll Down • Portfolio 2026 • Scroll Down • Portfolio 2026 • 
+                </textPath>
+              </text>
+            </svg>
+          </div>
+          {/* Central Arrow */}
+          <HiArrowDown className="text-[var(--accent-cyan)] text-xl animate-scroll-indicator" />
+        </div>
+      </motion.div>
+
+      {/* Mobile Scroll Indicator (Simpler) */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex sm:hidden flex-col items-center gap-2"
+      >
+        <span className="text-[var(--text-muted)] text-[10px] tracking-widest uppercase font-mono">
+          Scroll
         </span>
         <HiArrowDown className="text-[var(--accent-cyan)] animate-scroll-indicator" />
       </motion.div>

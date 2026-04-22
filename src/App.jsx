@@ -1,5 +1,5 @@
 import { useState, useEffect, Suspense, lazy } from 'react'
-import Navbar from './components/Navbar/Navbar'
+
 import Hero from './components/Hero/Hero'
 import Background3D from './components/Background3D'
 import LoadingScreen from './components/LoadingScreen'
@@ -44,17 +44,31 @@ function App() {
 
       {/* Scrollable content layer */}
       <div className="content-layer">
-        <Navbar />
+
         <main>
           <Hero />
           <Suspense fallback={<SectionLoader />}>
             <About />
+          </Suspense>
+          <Suspense fallback={<SectionLoader />}>
             <Skills />
+          </Suspense>
+          <Suspense fallback={<SectionLoader />}>
             <Journey />
-            <Projects />
-            <OpenSource />
+          </Suspense>
+          <Suspense fallback={<SectionLoader />}>
             <Experience />
+          </Suspense>
+          <Suspense fallback={<SectionLoader />}>
+            <Projects />
+          </Suspense>
+          <Suspense fallback={<SectionLoader />}>
+            <OpenSource />
+          </Suspense>
+          <Suspense fallback={<SectionLoader />}>
             <Contact />
+          </Suspense>
+          <Suspense fallback={<SectionLoader />}>
             <Footer />
           </Suspense>
         </main>
@@ -65,7 +79,7 @@ function App() {
 
 function SectionLoader() {
   return (
-    <div className="flex items-center justify-center py-20">
+    <div className="flex items-center justify-center py-10">
       <div className="w-8 h-8 border-2 border-[var(--accent-cyan)] border-t-transparent rounded-full animate-spin" />
     </div>
   )

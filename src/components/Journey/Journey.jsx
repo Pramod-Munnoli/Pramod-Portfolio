@@ -15,7 +15,7 @@ const phases = [
       'Mastered controlled components, useState with objects/arrays',
       'Tailwind CSS v4 with PostCSS integration',
       'Built: Product Catalog Dashboard, Weather App (Material UI), Subscription Form, Lottery Game',
-      'Lifted state across components; props-driven architecture',
+      'Lifted state across components props-driven architecture',
     ],
   },
   {
@@ -58,7 +58,7 @@ const phases = [
       'UUID for unique resource IDs without a database',
       'ES6 Classes, inheritance, super() — OOP in JavaScript',
       'Built: Quora Post Simulation (stateful REST API)',
-      'Built: WhatsApp Chat Simulation (Express + MongoDB, MVC prep)',
+      'Built: Mini WhatsApp Chat Simulation (Express + MongoDB, MVC prep)',
     ],
   },
   {
@@ -94,7 +94,6 @@ const phases = [
       'Tax toggle with live GST calculation (+18%)',
       'Like/Unlike system (persistent MongoDB, no page reload)',
       'Flash notifications (dismissible, Tailwind-styled)',
-      'Reusable EJS partials: navbar, footer, flash',
       'Dual validation: Joi (backend) + Tailwind peer classes (frontend)',
       'Static assets served from /public',
     ],
@@ -218,7 +217,7 @@ function PhaseCard({ phase, index }) {
 
 export default function Journey() {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-100px' })
+  const inView = useInView(ref, { once: true, margin: '-10px' })
 
   return (
     <section id="journey" className="section-padding relative overflow-hidden">
@@ -226,13 +225,13 @@ export default function Journey() {
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[var(--accent-blue)]/5 rounded-full blur-[120px]" />
       <div className="absolute bottom-0 left-0 w-[350px] h-[350px] bg-[var(--accent-gold)]/5 rounded-full blur-[100px]" />
 
-      <div ref={ref} className="max-w-5xl mx-auto relative z-10">
+      <div ref={ref} className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-6"
+          className="text-center mb-4"
         >
           <span className="section-label">
             The Centerpiece
@@ -247,7 +246,7 @@ export default function Journey() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-center text-[var(--text-secondary)] max-w-xl mx-auto mb-16 text-lg"
+          className="text-center text-[var(--text-secondary)] max-w-xl mx-auto mb-6 text-lg"
         >
           Not just skills listed — but <span className="text-[var(--accent-cyan)] font-semibold">skills earned</span>.
           <br />

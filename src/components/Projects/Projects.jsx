@@ -18,7 +18,7 @@ const projects = [
       'ATS-friendly formatting',
       'Download as PDF',
     ],
-    techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'LaTeX', 'OpenAI API'],
+    techStack: ['React', 'Node.js', 'Express', 'Supabase', 'LaTeX', 'GroqAI API'],
     impact: [
       'Streamlines resume creation process',
       'Helps job seekers create professional documents',
@@ -40,7 +40,7 @@ const projects = [
       'Crop management dashboard',
       'Multilingual support',
     ],
-    techStack: ['MongoDB', 'Express', 'React', 'Node.js', 'REST API'],
+    techStack: ['Supabase', 'Express', 'React', 'Node.js', 'REST API','GroqAI API'],
     impact: [
       'Eliminates middlemen, increasing farmer profits',
       'Provides market transparency',
@@ -62,7 +62,7 @@ const projects = [
       'Like/Unlike system (persistent MongoDB)',
       'Flash notifications & Dual validation',
     ],
-    techStack: ['Node.js', 'Express', 'MongoDB', 'Passport.js', 'EJS', 'Tailwind CSS'],
+    techStack: ['Node.js', 'Express', 'MongoDB', 'Passport.js', 'Tailwind CSS'],
     impact: [
       'Demonstrates production-level fullstack skills',
       'Complete authentication & authorization flow',
@@ -86,7 +86,7 @@ const fadeUp = {
 
 export default function Projects() {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-100px' })
+  const inView = useInView(ref, { once: true, margin: '-10px' })
 
   return (
     <section id="projects" className="section-padding relative overflow-hidden">
@@ -101,7 +101,7 @@ export default function Projects() {
           animate={inView ? 'visible' : 'hidden'}
           variants={fadeUp}
           custom={0}
-          className="text-center mb-16"
+          className="text-center mb-6"
         >
           <span className="section-label">
             What I've Built
@@ -113,7 +113,7 @@ export default function Projects() {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid lg:grid-cols-3 gap-10">
+        <div className="grid lg:grid-cols-3 gap-8">
           {projects.map((project, i) => (
             <motion.div
               key={project.title}

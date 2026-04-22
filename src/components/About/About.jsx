@@ -49,7 +49,7 @@ const fadeUp = {
 
 export default function About() {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-100px' })
+  const inView = useInView(ref, { once: true, margin: '-10px' })
 
   return (
     <section id="about" className="section-padding relative overflow-hidden">
@@ -64,7 +64,7 @@ export default function About() {
           animate={inView ? 'visible' : 'hidden'}
           variants={fadeUp}
           custom={0}
-          className="text-center mb-16"
+          className="text-center mb-6"
         >
           <span className="section-label">
             Get to know me
@@ -101,8 +101,8 @@ export default function About() {
               <div className="grid grid-cols-3 gap-4">
                 {[
                   { value: '11+', label: 'Repositories' },
-                  { value: '100+', label: 'Contributions' },
-                  { value: '6+', label: 'Open Source PRs' },
+                  { value: '345+', label: 'Contributions' },
+                  { value: '10+', label: 'Open Source PRs' },
                 ].map((stat) => (
                   <div 
                     key={stat.label} 

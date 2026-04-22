@@ -106,20 +106,20 @@ function TimelineItem({ item, index }) {
 
 export default function Experience() {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-100px' })
+  const inView = useInView(ref, { once: true, margin: '-10px' })
 
   return (
     <section id="experience" className="section-padding relative overflow-hidden">
       <div className="absolute top-1/4 right-0 w-[300px] h-[300px] bg-[var(--accent-purple)]/5 rounded-full blur-[100px] translate-x-1/3" />
 
-      <div ref={ref} className="max-w-5xl mx-auto relative z-10">
+      <div ref={ref} className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <motion.div
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
           variants={fadeUp}
           custom={0}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <span className="section-label">
             My Background
@@ -171,7 +171,7 @@ export default function Experience() {
               viewport={{ once: true }}
               variants={fadeUp}
               custom={4}
-              className="mt-20"
+              className="mt-10"
             >
               <h3 className="text-xl font-bold text-[var(--text-primary)] mb-6 flex items-center gap-3" style={{ fontFamily: 'var(--font-heading)' }}>
                 <HiBadgeCheck className="text-2xl text-[var(--accent-gold)]" /> Certifications
