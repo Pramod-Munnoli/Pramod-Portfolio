@@ -115,7 +115,7 @@ export default function Navbar() {
         {!isOpen && (
           <button
             onClick={() => setIsOpen(true)}
-            className="md:hidden text-2xl text-[var(--text-primary)] z-50 p-2 -mr-2"
+            className="md:hidden text-3xl text-[var(--text-primary)] z-50 p-4 -mr-4 flex items-center justify-center touch-manipulation"
             aria-label="Open menu"
           >
             <HiMenu />
