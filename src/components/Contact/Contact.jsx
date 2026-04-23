@@ -84,7 +84,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="section-padding relative overflow-hidden">
+    <section id="contact" className="section-padding relative overflow-hidden" style={{ paddingBottom: 0, marginBottom: 0 }}>
       {/* Background */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[var(--accent-cyan)]/5 rounded-full blur-[150px]" />
 
@@ -123,7 +123,7 @@ export default function Contact() {
                 key={link.name}
                 whileHover={{ x: 4 }}
                 className="glass rounded-xl flex items-center gap-5 hover:bg-white/[0.06] transition-all duration-300"
-                style={{ padding: '1rem 1.25rem', marginBottom: '2rem' }}
+                style={{ padding: '1rem 1.25rem', marginBottom: '1rem' }}
               >
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0"

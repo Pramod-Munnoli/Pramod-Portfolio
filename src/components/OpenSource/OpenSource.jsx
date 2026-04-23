@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { FaGithub, FaCodeBranch, FaStar, FaUsers } from 'react-icons/fa'
+import { FaGithub, FaCodeBranch, FaStar, FaUsers, FaMedal } from 'react-icons/fa'
 import { HiExternalLink } from 'react-icons/hi'
 
 const contributions = [
@@ -53,32 +53,83 @@ export default function OpenSource() {
             variants={fadeUp}
             custom={1}
             className="glass rounded-2xl glass-card relative overflow-hidden"
+            style={{ padding: '1rem' }}
           >
-            {/* Decorative gradient */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--accent-orange)]/10 rounded-full blur-[50px]" />
 
-            <div className="relative z-10">
-              <div className="text-5xl mb-4">🎃</div>
-              <h3 className="text-2xl font-bold text-[var(--accent-gold)] mb-2" style={{ fontFamily: 'var(--font-heading)' }}>
-                Hacktoberfest 2025
-              </h3>
-              <span className="inline-block px-6 py-2.5 rounded-full text-xs font-bold bg-[var(--accent-gold)]/15 text-[var(--accent-gold)] border border-[var(--accent-gold)]/20 mb-4">
-                🌟 Super Contributor
-              </span>
-              <ul className="space-y-3 mt-4">
-                <li className="flex items-start gap-3 text-[var(--text-secondary)]">
+            <div className="relative z-10 flex flex-col gap-4">
+              {/* Top Section */}
+              <div className="flex items-center gap-4 ">
+                <div className="text-5xl">🎃</div>
+                <div>
+                  <h3 className="text-2xl font-bold text-[var(--accent-gold)]" style={{ fontFamily: 'var(--font-heading)' }}>
+                    Hacktoberfest 2025
+                  </h3>
+                  <span className="inline-block px-4 py-1 rounded-full text-xs font-bold bg-[var(--accent-gold)]/15 text-[var(--accent-gold)] border border-[var(--accent-gold)]/20 mt-1">
+                    🌟 Super Contributor
+                  </span>
+                </div>
+              </div>
+
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3 text-[var(--text-secondary)] text-sm">
                   <FaStar className="text-[var(--accent-gold)] mt-0.5 flex-shrink-0" />
                   Achieved Super Contributor status with 6 accepted PRs
                 </li>
-                <li className="flex items-start gap-3 text-[var(--text-secondary)]">
+                <li className="flex items-start gap-3 text-[var(--text-secondary)] text-sm">
                   <FaCodeBranch className="text-[var(--accent-gold)] mt-0.5 flex-shrink-0" />
                   Contributed to multiple open-source projects
                 </li>
-                <li className="flex items-start gap-3 text-[var(--text-secondary)]">
+                <li className="flex items-start gap-3 text-[var(--text-secondary)] text-sm">
                   <FaUsers className="text-[var(--accent-gold)] mt-0.5 flex-shrink-0" />
                   Part of the global movement supporting open source
                 </li>
               </ul>
+
+              {/* Divider */}
+              <div className="flex items-center gap-3">
+                <div className="flex-1 h-px bg-[var(--accent-gold)]/20" />
+                <span className="text-[10px] tracking-widest uppercase text-[var(--accent-gold)]/60 font-mono flex items-center gap-1.5">
+                  <FaMedal className="text-[var(--accent-gold)]/60" /> My Holopin Badges
+                </span>
+                <div className="flex-1 h-px bg-[var(--accent-gold)]/20" />
+              </div>
+
+              {/* Holopin Badge Board Embed */}
+              <a
+                href="https://www.holopin.io/@pramodmunnoli#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block rounded-xl overflow-hidden border border-[var(--accent-gold)]/20 hover:border-[var(--accent-gold)]/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
+                style={{ boxShadow: '0 0 20px rgba(255,165,0,0.08)' }}
+                title="View Pramod's Holopin Badges"
+              >
+                <img
+                  src="https://holopin.me/pramodmunnoli"
+                  alt="Pramod Munnoli's Holopin Badges"
+                  className="w-full rounded-xl"
+                  style={{ display: 'block', background: 'transparent' }}
+                  loading="lazy"
+                />
+              </a>
+
+              {/* CTA Button */}
+              <a
+                href="https://www.holopin.io/@pramodmunnoli#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold border transition-all duration-300 hover:scale-105"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(255,165,0,0.15), rgba(255,100,0,0.08))',
+                  border: '1px solid rgba(255,165,0,0.40)',
+                  color: 'var(--accent-gold)',
+                  boxShadow: '0 0 16px rgba(255,165,0,0.18)',
+                }}
+              >
+                <FaMedal />
+                View All My Badges
+                <HiExternalLink />
+              </a>
             </div>
           </motion.div>
 
