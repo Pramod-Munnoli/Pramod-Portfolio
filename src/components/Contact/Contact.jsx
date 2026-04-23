@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { HiMail, HiLocationMarker, HiPaperAirplane } from 'react-icons/hi'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
+import emailjs from '@emailjs/browser'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -46,8 +47,8 @@ const socialLinks = [
 export default function Contact() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-10px' })
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
-  const [status, setStatus] = useState(null) // 'success' | 'error' | null
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' })
+  const [status, setStatus] = useState(null) // 'success' | 'error' | 'sending'
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
@@ -55,14 +56,28 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // EmailJS integration placeholder — replace with your service/template/public key
+    setStatus('sending')
+
     try {
-      // import emailjs from '@emailjs/browser'
-      // await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData, 'YOUR_PUBLIC_KEY')
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      }
+
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+
       setStatus('success')
-      setFormData({ name: '', email: '', message: '' })
+      setFormData({ name: '', email: '', subject: '', message: '' })
       setTimeout(() => setStatus(null), 5000)
     } catch (err) {
+      console.error('EmailJS Error:', err)
       setStatus('error')
       setTimeout(() => setStatus(null), 5000)
     }
@@ -145,41 +160,61 @@ export default function Contact() {
             variants={fadeUp}
             custom={2}
           >
-            <form onSubmit={handleSubmit} className="glass rounded-2xl force-container-padding space-y-10">
+            <form onSubmit={handleSubmit} className="glass rounded-2xl force-container-padding space-y-8">
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="contact-name" className="block text-sm font-medium text-[var(--text-secondary)] mb-2">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="contact-name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    placeholder="Your name"
+                    className="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-[var(--accent-cyan)] focus:outline-none focus:ring-1 focus:ring-[var(--accent-cyan)]/30 hover:bg-white/[0.12] transition-all duration-300"
+                    style={{ padding: '0.75rem 1.25rem' }}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="contact-email" className="block text-sm font-medium text-[var(--text-secondary)] mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="contact-email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    placeholder="your@email.com"
+                    className="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-[var(--accent-cyan)] focus:outline-none focus:ring-1 focus:ring-[var(--accent-cyan)]/30 hover:bg-white/[0.12] transition-all duration-300"
+                    style={{ padding: '0.75rem 1.25rem' }}
+                  />
+                </div>
+              </div>
+
               <div>
-                <label htmlFor="contact-name" className="block text-sm font-medium text-[var(--text-secondary)] mb-5">
-                  Name
+                <label htmlFor="contact-subject" className="block text-sm font-medium text-[var(--text-secondary)] mb-2">
+                  Subject
                 </label>
                 <input
                   type="text"
-                  id="contact-name"
-                  name="name"
-                  value={formData.name}
+                  id="contact-subject"
+                  name="subject"
+                  value={formData.subject}
                   onChange={handleChange}
                   required
-                  placeholder="Your name"
+                  placeholder="How can I help you?"
                   className="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-[var(--accent-cyan)] focus:outline-none focus:ring-1 focus:ring-[var(--accent-cyan)]/30 hover:bg-white/[0.12] transition-all duration-300"
-                  style={{ padding: '0.75rem 1.25rem', marginTop: '0.5rem' }}
+                  style={{ padding: '0.75rem 1.25rem' }}
                 />
               </div>
+
               <div>
-                <label htmlFor="contact-email" className="block text-sm font-medium text-[var(--text-secondary)] mb-5">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="contact-email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  placeholder="your@email.com"
-                  className="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-[var(--accent-cyan)] focus:outline-none focus:ring-1 focus:ring-[var(--accent-cyan)]/30 hover:bg-white/[0.12] transition-all duration-300"
-                  style={{ padding: '0.75rem 1.25rem', marginTop: '0.5rem' }}
-                />
-              </div>
-              <div>
-                <label htmlFor="contact-message" className="block text-sm font-medium text-[var(--text-secondary)] mb-5">
+                <label htmlFor="contact-message" className="block text-sm font-medium text-[var(--text-secondary)] mb-2">
                   Message
                 </label>
                 <textarea
@@ -188,21 +223,24 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows={5}
+                  rows={4}
                   placeholder="Tell me about your project..."
                   className="w-full rounded-xl bg-white/[0.08] border border-white/[0.12] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-[var(--accent-cyan)] focus:outline-none focus:ring-1 focus:ring-[var(--accent-cyan)]/30 hover:bg-white/[0.12] transition-all duration-300 resize-none"
-                  style={{ padding: '1rem 1.25rem', marginTop: '0.5rem' }}
+                  style={{ padding: '1rem 1.25rem' }}
                 />
               </div>
 
               <motion.button
                 type="submit"
+                disabled={status === 'sending'}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[var(--accent-cyan)] to-[var(--accent-purple)] text-[var(--bg-primary)] font-bold text-sm flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-[var(--accent-cyan)]/20 transition-shadow duration-300"
+                className={`w-full py-3.5 rounded-xl bg-gradient-to-r from-[var(--accent-cyan)] to-[var(--accent-purple)] text-[var(--bg-primary)] font-bold text-sm flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-[var(--accent-cyan)]/20 transition-all duration-300 ${
+                  status === 'sending' ? 'opacity-70 cursor-not-allowed' : ''
+                }`}
               >
-                <HiPaperAirplane className="rotate-45" />
-                Send Message
+                <HiPaperAirplane className={status === 'sending' ? 'animate-pulse' : 'rotate-45'} />
+                {status === 'sending' ? 'Sending...' : 'Send Message'}
               </motion.button>
 
               {/* Status messages */}
@@ -210,7 +248,7 @@ export default function Contact() {
                 <motion.p
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-center text-sm text-[var(--accent-green)]"
+                  className="text-center text-sm text-[var(--accent-green)] font-medium"
                 >
                   ✅ Message sent successfully! I'll get back to you soon.
                 </motion.p>
@@ -219,7 +257,7 @@ export default function Contact() {
                 <motion.p
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-center text-sm text-[var(--accent-red)]"
+                  className="text-center text-sm text-[var(--accent-red)] font-medium"
                 >
                   ❌ Something went wrong. Please try again or email me directly.
                 </motion.p>
