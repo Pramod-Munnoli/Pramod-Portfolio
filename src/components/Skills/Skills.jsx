@@ -1,8 +1,10 @@
 import { useRef, useMemo } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Float, Text, OrbitControls } from '@react-three/drei'
+import { Float, OrbitControls } from '@react-three/drei'
 import * as THREE from 'three'
+
+const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
 import {
   FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJs, FaDatabase,
   FaDocker, FaAws, FaGitAlt, FaGithub
@@ -155,15 +157,29 @@ export default function Skills() {
 
   return (
     <section id="skills" className="section-padding relative overflow-hidden">
-      {/* 3D Background */}
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-        <Canvas camera={{ position: [0, 0, 6], fov: 50 }} dpr={[1, 1.5]} eventSource={document.getElementById('root')}>
-          <ambientLight intensity={0.4} />
-          <pointLight position={[5, 5, 5]} intensity={0.5} />
-          <SkillSphere />
-          <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
-        </Canvas>
-      </div>
+      {/* 3D Background — hidden on mobile to save perf */}
+      {!isMobile && (
+        <div className="absolute inset-0 z-0 opacity-20" style={{ pointerEvents: 'none' }}>
+          <Canvas
+            camera={{ position: [0, 0, 6], fov: 50 }}
+            dpr={[1, 1.2]}
+            gl={{ antialias: false, powerPreference: 'default' }}
+            style={{ pointerEvents: 'none' }}
+          >
+            <ambientLight intensity={0.4} />
+            <pointLight position={[5, 5, 5]} intensity={0.5} />
+            <SkillSphere />
+            <OrbitControls
+              enableZoom={false}
+              enablePan={false}
+              enableRotate={false}
+              autoRotate
+              autoRotateSpeed={0.5}
+              touches={{ ONE: 0, TWO: 0 }}
+            />
+          </Canvas>
+        </div>
+      )}
 
       <div ref={ref} className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
@@ -205,7 +221,7 @@ export default function Skills() {
                 {cat.skills.map((skill) => (
                   <motion.div
                     key={skill.name}
-                    whileHover={{ scale: 1.08, y: -2 }}
+                    whileHover={!isMobile ? { scale: 1.08, y: -2 } : {}}
                     className="flex items-center gap-3 force-tag-padding rounded-xl bg-white/[0.04] border border-white/[0.06] text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-white/[0.15] transition-all duration-300 cursor-default"
                   >
                     <span className="text-base" style={{ color: cat.color }}>{skill.icon}</span>

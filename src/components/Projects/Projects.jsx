@@ -6,6 +6,8 @@ import {
   SiReact, SiNodedotjs, SiExpress, SiMongodb, SiLatex, SiOpenai, SiVercel
 } from 'react-icons/si'
 
+const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+
 const projects = [
   {
     title: 'AI LaTeX Resume Builder',
@@ -120,7 +122,7 @@ export default function Projects() {
               animate={inView ? 'visible' : 'hidden'}
               variants={fadeUp}
               custom={i + 1}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              whileHover={!isMobile ? { y: -8, transition: { duration: 0.3 } } : {}}
               className="group relative"
             >
               <div className="glass rounded-2xl overflow-hidden h-full flex flex-col hover:bg-white/[0.06] transition-all duration-500">

@@ -88,7 +88,6 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
-  touch-action: pan-y;
 }
 
 
@@ -99,8 +98,6 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-smoothing: grayscale;
-  -webkit-overflow-scrolling: touch;
-  touch-action: pan-y;
 }
 
 ::-webkit-scrollbar {
@@ -129,6 +126,7 @@ body {
   -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
   transition: all 0.3s ease;
+  will-change: transform, opacity;
 }
 
 .glass-strong {
@@ -181,6 +179,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  will-change: transform;
 }
 
 .section-padding>div:not(.absolute) {
@@ -306,9 +305,6 @@ body {
 .content-layer {
   position: relative;
   z-index: 1;
-  pointer-events: auto;
-  touch-action: pan-y;
-  -webkit-overflow-scrolling: touch;
 }
 
 /* Make sections semi-transparent so 3D shows through */

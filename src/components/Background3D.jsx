@@ -3,6 +3,8 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Float, MeshDistortMaterial, MeshWobbleMaterial, Sparkles, Stars } from '@react-three/drei'
 import * as THREE from 'three'
 
+const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+
 /* ─── Mouse-reactive camera rig ─── */
 function CameraRig() {
   const { camera } = useThree()
@@ -69,8 +71,8 @@ function ScrollGroup({ children }) {
 
 /* ─── Massive particle constellation field ─── */
 function ConstellationField() {
-  const count = 1800
-  const lineCount = 250
+  const count = isMobile ? 500 : 1800
+  const lineCount = isMobile ? 50 : 250
   const pointsRef = useRef()
   const linesRef = useRef()
 
@@ -711,13 +713,13 @@ export default function Background3D() {
     <div className="background-3d-container">
       <Canvas
         camera={{ position: [0, 0.5, 8], fov: 65 }}
-        dpr={[1, 1.5]}
+        dpr={isMobile ? [1, 1] : [1, 1.5]}
         gl={{
-          antialias: true,
+          antialias: !isMobile,
           alpha: true,
           powerPreference: 'high-performance',
         }}
-        style={{ background: 'transparent', pointerEvents: 'none', touchAction: 'auto' }}
+        style={{ background: 'transparent', pointerEvents: 'none' }}
       >
         {/* Lighting */}
         <ambientLight intensity={0.15} />
@@ -738,24 +740,28 @@ export default function Background3D() {
           <FloatingGeometries />
           <AnimatedRings />
           <DataStreams />
-          <HolographicModel />
+          {!isMobile && <HolographicModel />}
           <GridFloor />
 
           {/* Stars background */}
           <Stars
             radius={25}
             depth={60}
-            count={3000}
-            factor={3}
+            count={isMobile ? 800 : 3000}
+            factor={isMobile ? 1.5 : 3}
             saturation={0.5}
             fade
             speed={0.5}
           />
 
           {/* Sparkle layers */}
-          <Sparkles count={200} scale={20} size={2} speed={0.4} color="#00f5ff" opacity={0.5} />
-          <Sparkles count={150} scale={18} size={1.5} speed={0.3} color="#a855f7" opacity={0.4} />
-          <Sparkles count={100} scale={15} size={1} speed={0.6} color="#3b82f6" opacity={0.3} />
+          <Sparkles count={isMobile ? 40 : 200} scale={20} size={2} speed={0.4} color="#00f5ff" opacity={0.5} />
+          {!isMobile && (
+            <>
+              <Sparkles count={150} scale={18} size={1.5} speed={0.3} color="#a855f7" opacity={0.4} />
+              <Sparkles count={100} scale={15} size={1} speed={0.6} color="#3b82f6" opacity={0.3} />
+            </>
+          )}
         </ScrollGroup>
       </Canvas>
     </div>
