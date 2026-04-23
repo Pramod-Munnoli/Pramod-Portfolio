@@ -18,17 +18,39 @@ function App() {
   const [loadProgress, setLoadProgress] = useState(0)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setLoadProgress(prev => {
-        if (prev >= 100) {
-          clearInterval(interval)
-          setTimeout(() => setIsLoading(false), 400)
-          return 100
-        }
-        return prev + Math.random() * 15 + 5
-      })
-    }, 150)
-    return () => clearInterval(interval)
+    // Start preloading components immediately
+    const preloadComponents = () => {
+      return Promise.all([
+        import('./components/About/About'),
+        import('./components/Skills/Skills'),
+        import('./components/Journey/Journey'),
+        import('./components/Projects/Projects'),
+        import('./components/OpenSource/OpenSource'),
+        import('./components/Experience/Experience'),
+        import('./components/Contact/Contact'),
+        import('./components/Footer/Footer')
+      ])
+    }
+
+    const timer = new Promise(resolve => {
+      const interval = setInterval(() => {
+        setLoadProgress(prev => {
+          if (prev >= 100) {
+            clearInterval(interval)
+            resolve()
+            return 100
+          }
+          return prev + Math.random() * 15 + 5
+        })
+      }, 150)
+    })
+
+    // Wait for BOTH the fake progress AND the actual component chunks
+    Promise.all([preloadComponents(), timer]).then(() => {
+      setTimeout(() => {
+        setIsLoading(false)
+      }, 600)
+    })
   }, [])
 
   if (isLoading) {
@@ -78,11 +100,7 @@ function App() {
 }
 
 function SectionLoader() {
-  return (
-    <div className="flex items-center justify-center py-10">
-      <div className="w-8 h-8 border-2 border-[var(--accent-cyan)] border-t-transparent rounded-full animate-spin" />
-    </div>
-  )
+  return null // Components are preloaded, so we avoid visible spinners during fast scrolls
 }
 
 export default App
