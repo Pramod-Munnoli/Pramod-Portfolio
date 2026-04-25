@@ -3,6 +3,7 @@ import Navbar from './components/Navbar/Navbar'
 import Hero from './components/Hero/Hero'
 import Background3D from './components/Background3D'
 import LoadingScreen from './components/LoadingScreen'
+import CustomCursor from './components/CustomCursor/CustomCursor'
 
 const About = lazy(() => import('./components/About/About'))
 const Skills = lazy(() => import('./components/Skills/Skills'))
@@ -59,6 +60,7 @@ function App() {
 
   return (
     <div className="relative">
+      <CustomCursor />
       {/* Fixed 3D background that stays behind everything */}
       <Suspense fallback={null}>
         <Background3D />
