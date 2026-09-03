@@ -153,7 +153,7 @@ export default function OpenSource() {
               <div className="grid grid-cols-2 gap-6 mb-8">
                 {[
                   { value: '13+', label: 'Repositories', color: 'var(--accent-cyan)' },
-                  { value: '405+', label: 'Contributions 2025', color: 'var(--accent-green)' },
+                  { value: '405+', label: 'Contributions 2025-26', color: 'var(--accent-green)' },
                   { value: '15+', label: 'Accepted PRs', color: 'var(--accent-purple)' },
                   { value: '∞', label: 'Lines of Code', color: 'var(--accent-pink)' },
                 ].map((stat) => (

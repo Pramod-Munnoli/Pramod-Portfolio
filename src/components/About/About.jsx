@@ -135,9 +135,9 @@ export default function About() {
                 {/* Quick stats */}
                 <div className="grid grid-cols-3 gap-4">
                   {[
-                    { value: '11+', label: 'Repositories' },
-                    { value: '345+', label: 'Contributions' },
-                    { value: '10+', label: 'Open Source PRs' },
+                    { value: '13+', label: 'Repositories' },
+                    { value: '405+', label: 'Contributions' },
+                    { value: '15+', label: 'Open Source PRs' },
                   ].map((stat) => (
                     <div 
                       key={stat.label} 
