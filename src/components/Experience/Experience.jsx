@@ -6,8 +6,8 @@ const education = [
   {
     type: 'education',
     title: 'Bachelor of Computer Applications (BCA)',
-    subtitle: 'Final Year Student',
-    period: 'Expected 2026',
+    subtitle: 'Rani Chennamma University, Belagavi',
+    period: '2026',
     description: 'Studying computer science fundamentals, software engineering, and modern web technologies. Building real-world project experience alongside academic curriculum.',
     icon: <HiAcademicCap />,
     color: 'var(--accent-cyan)',
