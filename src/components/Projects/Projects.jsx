@@ -54,7 +54,7 @@ const projects = [
     accentColor: '#10b981',
   },
   {
-    title: 'Wanderlust — AirBnB Clone',
+    title: 'Wanderlust — Airbnb Clone',
     icon: <FaHotel />,
     description: 'A full-stack capstone project — deployed production app with auth, CRUD, and category filtering.',
     features: [

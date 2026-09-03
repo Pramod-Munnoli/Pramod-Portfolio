@@ -127,7 +127,7 @@ export default function About() {
                   I transform complex problems into elegant digital solutions.
                 </p>
                 <p className="text-[var(--text-secondary)] leading-relaxed mb-8">
-                  Currently a <span className="text-[var(--accent-gold)] font-semibold">BCA final year student</span>, I have worked
+                  As a <span className="text-[var(--accent-gold)] font-semibold">BCA Graduate</span>, I have worked
                   on real-world projects that solve genuine problems — from AI-powered resume builders to agricultural
                   marketplace platforms. I believe in learning by building.
                 </p>
