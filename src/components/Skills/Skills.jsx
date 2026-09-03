@@ -26,9 +26,9 @@ const skillCategories = [
       { name: 'HTML5', icon: <FaHtml5 /> },
       { name: 'CSS3', icon: <FaCss3Alt /> },
       { name: 'JavaScript', icon: <FaJs /> },
-      { name: 'TypeScript', icon: <SiTypescript /> },
+      // { name: 'TypeScript', icon: <SiTypescript /> },
       { name: 'Tailwind CSS', icon: <SiTailwindcss /> },
-      { name: 'Zustand', icon: <FaReact /> },
+      // { name: 'Zustand', icon: <FaReact /> },
     ],
   },
   {
@@ -37,7 +37,7 @@ const skillCategories = [
     skills: [
       { name: 'Node.js', icon: <FaNodeJs /> },
       { name: 'Express.js', icon: <SiExpress /> },
-      { name: 'Real-Time (Socket.io)', icon: <SiSocketdotio /> },
+      // { name: 'Real-Time (Socket.io)', icon: <SiSocketdotio /> },
       { name: 'RESTful APIs', icon: <FaServer /> },
       { name: 'JWT Auth', icon: <SiJsonwebtokens /> },
     ],
@@ -47,7 +47,7 @@ const skillCategories = [
     color: 'var(--accent-orange)',
     skills: [
       { name: 'MongoDB', icon: <SiMongodb /> },
-      { name: 'Mongoose Aggregation', icon: <SiMongodb /> },
+      // { name: 'Mongoose Aggregation', icon: <SiMongodb /> },
       { name: 'MySQL', icon: <SiMysql /> },
       { name: 'PostgreSQL', icon: <SiPostgresql /> },
       { name: 'Firebase', icon: <SiFirebase /> },
